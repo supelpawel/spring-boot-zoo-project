@@ -6,10 +6,11 @@ import com.supelpawel.zoo.animal.dto.CreateAnimalDto;
 import com.supelpawel.zoo.animal.service.AnimalService;
 import com.supelpawel.zoo.zone.service.ZoneService;
 import java.util.List;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,8 +45,8 @@ public class AnimalController {
   }
 
   @PostMapping("/animal/add")
-  public String processAddAnimalForm(@Validated CreateAnimalDto createAnimalDto) {
-    return animalService.processAddAnimalForm(createAnimalDto);
+  public String processAddAnimalForm(@Valid CreateAnimalDto createAnimalDto, BindingResult result) {
+    return animalService.processAddAnimalForm(createAnimalDto, result);
   }
 
   @GetMapping("/animal/find-by-zone")

@@ -1,25 +1,15 @@
 package com.supelpawel.zoo.animal.model;
 
-public class AnimalFactory implements AnimalCreator {
+public class AnimalFactory {
 
-  @Override
   public Animal createAnimal(String species) {
-    Animal animal;
+    Animal animal = null;
 
     switch (species) {
-      case "ELEPHANT" -> {
-        animal = new Elephant();
-        return animal;
-      }
-      case "LION" -> {
-        animal = new Lion();
-        return animal;
-      }
-      case "RABBIT" -> {
-        animal = new Rabbit();
-        return animal;
-      }
+      case "ELEPHANT" -> animal = new Elephant();
+      case "LION" -> animal = new Lion();
+      case "RABBIT" -> animal = new Rabbit();
     }
-    return null;
+    return animal;
   }
 }

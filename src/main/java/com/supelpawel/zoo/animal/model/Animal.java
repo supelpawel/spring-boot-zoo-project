@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -19,6 +20,7 @@ public class Animal implements AnimalSpecies {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String species;
+  @Size(min = 3)
   private String name;
   @OneToOne
   @JsonIgnore

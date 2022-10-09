@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 @Service
 @AllArgsConstructor
@@ -29,7 +30,11 @@ public class AnimalService {
   }
 
   @Transactional
-  public String processAddAnimalForm(CreateAnimalDto createAnimalDto) {
+  public String processAddAnimalForm(CreateAnimalDto createAnimalDto, BindingResult result) {
+    if (result.hasErrors()) {
+      return "animal/add";
+    }
+
     AnimalFactory animalFactory = new AnimalFactory();
     Animal animal = animalFactory.createAnimal(String.valueOf(createAnimalDto.getSpecies()));
     Zone zone = zoneService.findByName(createAnimalDto.getZoneName());

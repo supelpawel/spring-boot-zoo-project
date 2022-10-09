@@ -6,7 +6,6 @@
     <title>Add a new animal</title>
 </head>
 <body>
-
 <form:form method="post" modelAttribute="createAnimalDto">
     <p>
         Name: <form:input path="name"/>
