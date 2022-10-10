@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class Animal implements AnimalSpecies {
   private String species;
   @Size(min = 3)
   private String name;
-  @OneToOne
+  @ManyToOne
   @JsonIgnore
   private Zone zone;
   private int foodPortionsPerDay;
